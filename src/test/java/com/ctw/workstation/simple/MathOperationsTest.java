@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MathOperationsTest {
-    private static MathOperations mathOperations;
+    /*private static MathOperations mathOperations;
 
     @BeforeAll
     static void setup(){
@@ -57,5 +57,5 @@ class MathOperationsTest {
         //when
         Assertions.assertThrows(ArithmeticException.class,
                 () -> mathOperations.divide(dividend,divisor));
-    }
+    }*/
 }

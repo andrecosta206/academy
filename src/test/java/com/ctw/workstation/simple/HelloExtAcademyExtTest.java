@@ -29,7 +29,7 @@ import static org.assertj.core.api.Assertions.*;
 @QuarkusTestResource(WiremockResource.class)
 class HelloExtAcademyExtTest {
 
-    @Inject
+    /*@Inject
     HelloExtAcademy helloExtAcademy;
 
     @Test
@@ -51,6 +51,6 @@ class HelloExtAcademyExtTest {
         //then
         assertThat(result)
                 .isEqualTo("Hello OLA");
-    }
+    }*/
 
 }

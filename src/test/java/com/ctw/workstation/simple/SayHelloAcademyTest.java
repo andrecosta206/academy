@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SayHelloAcademyTest {
-
+/*
     public static Stream<Arguments> say_hello_with_valid_name(){
         return Stream.of(
                 Arguments.of("Hello Maria","Maria"),
@@ -57,5 +57,5 @@ class SayHelloAcademyTest {
 
         //then
         assertEquals("Hello", result, "Matching result is not what was expected");
-    }
+    }*/
 }

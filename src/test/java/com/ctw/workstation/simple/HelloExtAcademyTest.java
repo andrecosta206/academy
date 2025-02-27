@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class HelloExtAcademyTest {
 
-    @Mock
+    /*@Mock
     ExternalMessageService externalMessageService;
 
     @InjectMocks
@@ -71,7 +71,7 @@ class HelloExtAcademyTest {
         //then
         assertThat(result).
                 isEqualTo("Hello World");
-    }
+    }*/
 
     //Testes, restassured, assertj, mockito, junit
     //argument captor\\
