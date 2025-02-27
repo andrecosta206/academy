@@ -16,10 +16,10 @@ runs:
   steps:
     - name: Set tag and name
       run: |
-        if [ -z "${{ inputs.{{ tag_name }} }}" ]; then
+        if [ -z "${{ inputs.tag_name }}" ]; then
           echo "TAG=$(date +%s)" >> $GITHUB_ENV
         else
-          echo "TAG=${{ inputs.{{ image_name }} }}" >> $GITHUB_ENV
+          echo "TAG=${{ inputs.image_name }}" >> $GITHUB_ENV
         fi
       shell: bash
     - name: Build docker image
