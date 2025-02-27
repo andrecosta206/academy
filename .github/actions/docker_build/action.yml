@@ -1,0 +1,11 @@
+name: "Docker Buil"
+description: "Building docker image for quarkus aplication"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build docker image
+      run: docker build . --file src/main/docker/Dockerfile.jvm --tag academy:$(date +%s)
+    - name: Check if docker was build
+      run: docker images | grep "academy"
+      shell: bash
