@@ -11,5 +11,7 @@ runs:
   steps:
     - name: Prep image tag
       run:  docker image tag ${{inputs.IMAGE_NAME}} ${{inputs.DOCKERHUB_USERNAME}}${{inputs.IMAGE_NAME}}
+      shell: bash
     - name: Push image to registry
       run: docker image push ${{inputs.DOCKERHUB_USERNAME}}/${{inputs.IMAGE_NAME}}
+      shell: bash
