@@ -60,9 +60,9 @@ class TeamResourceTest {
                 extract().as(Team.class);
 
         assertAll(
-                () -> assertNotNull(team.getId()),
-                () -> assertEquals("Stars",team.getName()),
-                () -> assertEquals("Popo Car",team.getProduct())
+                () -> assertNotNull(team.id),
+                () -> assertEquals("Stars",team.name),
+                () -> assertEquals("Popo Car",team.product)
         );
     }
 
@@ -73,7 +73,7 @@ class TeamResourceTest {
         given().
                 header("Content-Type","application/json").
                 when().
-                get("/{id}", team.getId())
+                get("/{id}", team.id)
                 .then().statusCode(200);
     }
 }
