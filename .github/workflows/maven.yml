@@ -24,6 +24,5 @@ jobs:
 
     - name: Build docker image
       run: docker build . --file src/main/docker/Dockerfile.jvm --tag academy:$(date +%s)
-      #    - name: Check if docker was build
-      #- run: docker images | grep "academy"
-
+    - name: Check if docker was build
+      run: docker images | grep -o "academy"
