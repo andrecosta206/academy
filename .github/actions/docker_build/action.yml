@@ -1,12 +1,31 @@
 name: "Docker Buil"
 description: "Building docker image for quarkus aplication"
-
+inputs:
+  path_dockerfile:
+    description: "Path to Dockerfile"
+    type: string
+  image_name:
+    description: "Image name"
+    type: string
+  tag_name:
+    description: "Tag for docker image"
+    type: string
 runs:
   using: "composite"
+
   steps:
-    - name: Build docker image
-      run: docker build . --file src/main/docker/Dockerfile.jvm --tag academy:$(date +%s)
+    - name: Set tag and name
+      run: |
+        if [ -z "${{ inputs.{{tag_name}} }}" ]; then
+          echo "TAG=$(date +%s)" >> $GITHUB_ENV
+        else
+          echo "TAG=${{ inputs.{{image_name}} }}" >> $GITHUB_ENV
+        fi
       shell: bash
-    - name: Check if docker was build
+    - name: Build docker image
+      run: docker build . --file ${{inputs.path_dockerfile}} --tag ${{inputs.image_name}}:${{ env.TAG}}
+      shell: bash
+
+    - name: Verify docker image
       run: docker images | grep "academy"
       shell: bash
