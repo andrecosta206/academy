@@ -10,6 +10,6 @@ runs:
   using: "composite"
   steps:
     - name: Prep image tag
-      run:  docker image tag ${{IMAGE_NAME}} ${{DOCKERHUB_USERNAME}}${{IMAGE_NAME}}
+      run:  docker image tag ${{inputs.IMAGE_NAME}} ${{inputs.DOCKERHUB_USERNAME}}${{inputs.IMAGE_NAME}}
     - name: Push image to registry
-      run: docker image push ${{DOCKERHUB_USERNAME}}/${{IMAGE_NAME}}
+      run: docker image push ${{inputs.DOCKERHUB_USERNAME}}/${{inputs.IMAGE_NAME}}
