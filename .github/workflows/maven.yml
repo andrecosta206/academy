@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  IMAGE_NAME: academy
+  TAG: v1
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,7 +33,7 @@ jobs:
         uses: andrecosta206/academy/.github/actions/docker_push@main
         with:
           DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
-          IMAGE_NAME: "${{ env.image_name }}:${{ env.TAG }}"
+          IMAGE_NAME: "${{ env.DOCKER_IMAGE_NAME}}"
 
 
 

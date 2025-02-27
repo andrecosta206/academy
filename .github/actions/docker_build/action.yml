@@ -29,3 +29,7 @@ runs:
     - name: Verify docker image
       run: docker images | grep "academy"
       shell: bash
+
+    - name: Define Image name
+      run: echo "DOCKER_IMAGE_NAME=${{inputs.image_name}}:${{env.TAG}}" >> $GITHUB_ENV
+      shell: bash
