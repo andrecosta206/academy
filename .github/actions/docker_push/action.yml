@@ -1,0 +1,15 @@
+name: Docker push
+description: "Docker action to push image into registry"
+
+inputs:
+  DOCKERHUB_USERNAME:
+    description: "Docker username"
+  IMAGE_NAME:
+    description: "Docker image name"
+runs:
+  using: "composite"
+  steps:
+    - name: Prep image tag
+      run:  docker image tag ${{IMAGE_NAME}} ${{DOCKERHUB_USERNAME}}${{IMAGE_NAME}}
+    - name: Push image to registry
+      run: docker image push ${{DOCKERHUB_USERNAME}}/${{IMAGE_NAME}}
