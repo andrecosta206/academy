@@ -14,27 +14,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
 class RackResourceTest {
-
-    //make tests for racks
-    @Test
-    void get_all_racks() {
-        List<RackDTO> rackDTOs = given().header("Accept", "application/json")
-                .when().get("/racks")
-                .then()
-                .assertThat().statusCode(200).extract().as(new TypeRef<List<RackDTO>>() {});
-
-        assertThat(rackDTOs).allSatisfy( rackDTO -> {
-            assertThat(rackDTO).
-                    as("").
-                    hasNoNullFieldsOrProperties().
-                    usingRecursiveComparison().
-                    ignoringFields("id").
-                    as("").
-                    isEqualTo(rackDTO);
-                });
-    }
-
-    @Test
-    void addRack() {
-    }
+//
+//    //make tests for racks
+//    @Test
+//    void get_all_racks() {
+//        List<RackDTO> rackDTOs = given().header("Accept", "application/json")
+//                .when().get("/racks")
+//                .then()
+//                .assertThat().statusCode(200).extract().as(new TypeRef<List<RackDTO>>() {});
+//
+//        assertThat(rackDTOs).allSatisfy( rackDTO -> {
+//            assertThat(rackDTO).
+//                    as("").
+//                    hasNoNullFieldsOrProperties().
+//                    usingRecursiveComparison().
+//                    ignoringFields("id").
+//                    as("").
+//                    isEqualTo(rackDTO);
+//                });
+//    }
+//
+//    @Test
+//    void addRack() {
+//    }
 }

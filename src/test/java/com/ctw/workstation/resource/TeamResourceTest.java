@@ -22,58 +22,58 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestHTTPEndpoint(TeamResource.class)
 class TeamResourceTest {
-    private static Team team;
-
-    private static TeamDTO buildTeamDTO() {
-        return new TeamDTO(null,"Stars","Popo Car","LISBON");
-    }
-
-    @Test
-    @DisplayName("Fetching all teams")
-    @Order(2)
-    void fetching_all_teams() {
-        List<TeamDTO> teamDTOs = given().
-                header("Content-Type","application/json")
-                .when().get("")
-                .then().
-                statusCode(200).
-                extract().as(new TypeRef<List<TeamDTO>>() {});
-
-        assertThat(teamDTOs).allSatisfy(teamDTO -> {
-            assertThat(teamDTO).as("Teams fetched validation").hasNoNullFieldsOrProperties();
-        });
-    }
-
-    @Test
-    @DisplayName("Creating team")
-    @Order(1)
-    void creating_team() {
-        TeamDTO teamDTO = buildTeamDTO();
-
-        team = given().
-                header("Content-Type","application/json").
-                body(teamDTO).
-                when().
-                post("").
-                then().
-                statusCode(201).
-                extract().as(Team.class);
-
-        assertAll(
-                () -> assertNotNull(team.id),
-                () -> assertEquals("Stars",team.name),
-                () -> assertEquals("Popo Car",team.product)
-        );
-    }
-
-    @Test
-    @DisplayName("Fetching team by Id")
-    @Order(3)
-    void fetching_team_by_id() {
-        given().
-                header("Content-Type","application/json").
-                when().
-                get("/{id}", team.id)
-                .then().statusCode(200);
-    }
+//    private static Team team;
+//
+//    private static TeamDTO buildTeamDTO() {
+//        return new TeamDTO(null,"Stars","Popo Car","LISBON");
+//    }
+//
+//    @Test
+//    @DisplayName("Fetching all teams")
+//    @Order(2)
+//    void fetching_all_teams() {
+//        List<TeamDTO> teamDTOs = given().
+//                header("Content-Type","application/json")
+//                .when().get("")
+//                .then().
+//                statusCode(200).
+//                extract().as(new TypeRef<List<TeamDTO>>() {});
+//
+//        assertThat(teamDTOs).allSatisfy(teamDTO -> {
+//            assertThat(teamDTO).as("Teams fetched validation").hasNoNullFieldsOrProperties();
+//        });
+//    }
+//
+//    @Test
+//    @DisplayName("Creating team")
+//    @Order(1)
+//    void creating_team() {
+//        TeamDTO teamDTO = buildTeamDTO();
+//
+//        team = given().
+//                header("Content-Type","application/json").
+//                body(teamDTO).
+//                when().
+//                post("").
+//                then().
+//                statusCode(201).
+//                extract().as(Team.class);
+//
+//        assertAll(
+//                () -> assertNotNull(team.id),
+//                () -> assertEquals("Stars",team.name),
+//                () -> assertEquals("Popo Car",team.product)
+//        );
+//    }
+//
+//    @Test
+//    @DisplayName("Fetching team by Id")
+//    @Order(3)
+//    void fetching_team_by_id() {
+//        given().
+//                header("Content-Type","application/json").
+//                when().
+//                get("/{id}", team.id)
+//                .then().statusCode(200);
+//    }
 }

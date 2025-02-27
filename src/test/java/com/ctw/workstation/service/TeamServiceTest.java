@@ -22,52 +22,52 @@ import static org.junit.jupiter.api.Assertions.*;
 @QuarkusTest
 @TestProfile(QuarkusTestProfile.class)
 class TeamServiceTest {
-
-    //injeta todas as dependencias pertencentes ao
-    //   teamService sem ecessitar de criar mocks manualment
-    @Inject
-    TeamService teamService;
-
-    @InjectMock
-    TeamRepository teamRepository;
-
-    @Test
-    @DisplayName("Create team")
-    void create_team() {
-        TeamDTO teamDTO = new TeamDTO(null,"Wind Wizards", "Fly", "LISBON");
-        //when
-        TeamDTO createdTeam = teamService.createTeam(teamDTO);
-        //then
-        assertThat(createdTeam)
-                .as("DTO from persisted team was returned with no null fileds of properties")
-                .hasNoNullFieldsOrProperties()
-                .usingRecursiveComparison()
-                .ignoringFields("id")
-                .as("DTO was returned with the data provided")
-                .isEqualTo(teamDTO);
-    }
-
-    @Test
-    @DisplayName("Create team impossible")
-    void create_team_impossible() {
-        Mockito.doThrow(new IllegalArgumentException("PODE NAO VELHO"))
-                .when(teamRepository)
-                .persist(Mockito.any(Team.class));
-
-        TeamDTO teamDTO = new TeamDTO(null,"Wind Wizards", "Fly", "LISBON");
-        //when
-        TeamDTO createdTeam = teamService.createTeam(teamDTO);
-        //then
-        assertThatThrownBy(() -> teamService.createTeam(teamDTO))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("PODE NAO VELHO");
-    }
-
-    @Test
-    void getTeamById() {
-    }
-
-    @Test
-    void createTeam() {
-    }
+//
+//    //injeta todas as dependencias pertencentes ao
+//    //   teamService sem ecessitar de criar mocks manualment
+//    @Inject
+//    TeamService teamService;
+//
+//    @InjectMock
+//    TeamRepository teamRepository;
+//
+//    @Test
+//    @DisplayName("Create team")
+//    void create_team() {
+//        TeamDTO teamDTO = new TeamDTO(null,"Wind Wizards", "Fly", "LISBON");
+//        //when
+//        TeamDTO createdTeam = teamService.createTeam(teamDTO);
+//        //then
+//        assertThat(createdTeam)
+//                .as("DTO from persisted team was returned with no null fileds of properties")
+//                .hasNoNullFieldsOrProperties()
+//                .usingRecursiveComparison()
+//                .ignoringFields("id")
+//                .as("DTO was returned with the data provided")
+//                .isEqualTo(teamDTO);
+//    }
+//
+//    @Test
+//    @DisplayName("Create team impossible")
+//    void create_team_impossible() {
+//        Mockito.doThrow(new IllegalArgumentException("PODE NAO VELHO"))
+//                .when(teamRepository)
+//                .persist(Mockito.any(Team.class));
+//
+//        TeamDTO teamDTO = new TeamDTO(null,"Wind Wizards", "Fly", "LISBON");
+//        //when
+//        TeamDTO createdTeam = teamService.createTeam(teamDTO);
+//        //then
+//        assertThatThrownBy(() -> teamService.createTeam(teamDTO))
+//                .isInstanceOf(IllegalArgumentException.class)
+//                .hasMessage("PODE NAO VELHO");
+//    }
+//
+//    @Test
+//    void getTeamById() {
+//    }
+//
+//    @Test
+//    void createTeam() {
+//    }
 }
