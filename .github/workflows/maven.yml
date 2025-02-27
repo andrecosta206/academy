@@ -29,7 +29,7 @@ jobs:
         uses: andrecosta206/academy/.github/actions/docker_push@main
         with:
           DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
-          IMAGE_NAME: "${{ env.image_name }}:${{ env.tag_name }}"
+          IMAGE_NAME: "${{ env.image_name }}:${{ env.TAG }}"
 
 
 
